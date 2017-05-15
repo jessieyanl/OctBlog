@@ -24,6 +24,7 @@ def create_app(config_name):
         template_folder=config[config_name].TEMPLATE_PATH, static_folder=config[config_name].STATIC_PATH)
     app.config.from_object(config[config_name])
 
+    
     config[config_name].init_app(app)
 
     db.init_app(app)

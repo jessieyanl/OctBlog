@@ -202,9 +202,12 @@ class Config(object):
     TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates').replace('\\', '/')
     STATIC_PATH = os.path.join(BASE_DIR, 'static').replace('\\', '/')
     EXPORT_PATH = os.path.join(BASE_DIR, 'exports').replace('\\', '/')
-
+    UPLOAD_PATH = os.path.join(BASE_DIR, 'upload').replace('\\', '/')
+    
+    
     if not os.path.exists(EXPORT_PATH):
         os.makedirs(EXPORT_PATH)
+        
 
     REMEMBER_COOKIE_DURATION = datetime.timedelta(hours=3)
 

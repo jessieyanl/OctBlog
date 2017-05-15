@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from . import views, admin_views, errors
+from . import views, admin_views, errors, upload
 
 main = Blueprint('main', __name__)
 
@@ -17,10 +17,10 @@ main.add_url_rule('/archive/', 'archive', views.archive)
 main.add_url_rule('/users/<username>/', 'author_detail', views.author_detail)
 main.add_url_rule('/atom/', 'recent_feed', views.recent_feed)
 main.add_url_rule('/sitemap.xml/', 'sitemap', views.sitemap)
+main.add_url_rule('/uploads/<filename>/', 'uploaded_file',upload.uploaded_file)
 main.errorhandler(404)(errors.page_not_found)
 main.errorhandler(401)(errors.handle_unauthorized)
 main.add_url_rule('/<path:invalid_path>', 'handle_unmatchable', errors.handle_unmatchable)
-
 
 blog_admin = Blueprint('blog_admin', __name__)
 
@@ -58,4 +58,8 @@ blog_admin.add_url_rule('/su/export/', view_func=admin_views.SuExportView.as_vie
 blog_admin.errorhandler(404)(errors.admin_page_not_found)
 blog_admin.errorhandler(401)(errors.handle_unauthorized)
 blog_admin.errorhandler(403)(errors.handle_forbidden)
+
+blog_admin.add_url_rule('/api/upload', view_func=upload.api_upload, methods=['POST'], strict_slashes=False)
+
+
 

@@ -40,14 +40,14 @@ class WidgetForm(FlaskForm):
     priority = IntegerField(default=1000000)
 
 class CommentForm(FlaskForm):
-    email = StringField('* Email', validators=[Required(), Length(1,128), Email()])
-    author = StringField('* Name', validators=[Required(), Length(1,128)])
-    homepage = StringField('Homepage', validators=[URL(), Optional()])
-    content = TextAreaField('* Comment <small><span class="label label-info">markdown</span></small>', validators=[Required()])
+    email = StringField(u'邮件', validators=[Length(1,128), Email(),Optional()])
+    author = StringField(u'名称（必填）', validators=[Required(), Length(1,128)])
+    homepage = StringField(u'主页', validators=[URL(), Optional()])
+    content = TextAreaField(u'评论（必填） <small><span class="label label-info">markdown</span></small>', validators=[Required()])
     comment_id = HiddenField('comment_id')
 
 class SessionCommentForm(FlaskForm):
-    email = HiddenField('* Email')
+    email = HiddenField('Email')
     author = HiddenField('* Name')
     homepage = HiddenField('Homepage')
     content = TextAreaField('* Comment', validators=[Required()])

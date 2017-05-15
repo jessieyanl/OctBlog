@@ -269,7 +269,7 @@ def octblog_comment(post_id, post_title, post_url, comment_shortname, form=None,
 def octblog_create_comment(form, post):
     comment = models.Comment()
     comment.author = form.author.data.strip()
-    comment.email = form.email.data.strip()
+    comment.email = form.email.data.strip() or None
     comment.homepage = form.homepage.data.strip() or None
     comment.post_slug = post.slug
     comment.post_title = post.title
@@ -277,7 +277,7 @@ def octblog_create_comment(form, post):
     comment.save()
 
     session['author'] = form.author.data.strip()
-    session['email'] = form.email.data.strip()
+    session['email'] = form.email.data.strip() or None
     session['homepage'] = form.homepage.data.strip()
 
 

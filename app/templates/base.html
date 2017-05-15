@@ -22,7 +22,7 @@
     <meta name="sogou_site_verification" content="{{ blog_meta.sogou_site_verification }}"/>
     <meta name="sogou-site-verification" content="{{ blog_meta.sogou_site_verification }}"/>
 
-    <title>{% block title %}Oct Blog{% endblock %}</title>
+    <title>{% block title %}{{ blog_meta.name }}{% endblock %}</title>
 
     <!-- Bootstrap Core CSS -->
 
@@ -77,7 +77,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url_for('main.index') }}">Oct Blog</a> 
+                <a class="navbar-brand" href="{{ url_for('main.index') }}">{{ blog_meta.name }}</a> 
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -86,7 +86,7 @@
                         <a href="{{ url_for('main.recent_feed') }}" target="_blank">RSS</i></a>
                     </li>
                     <li>
-                        <a href="{{ url_for('main.archive') }}">Archive</i></a>
+                        <a href="{{ url_for('main.archive') }}">存档</i></a>
                     </li>
 
                    
@@ -145,7 +145,6 @@
                         </li>
                     </ul>
                     <p class="copyright text-muted">Copyright &copy; Oct Blog 2015</p>
-                    <p class="copyright text-muted"><a href="http://www.qiniu.com" target="_blank" ><img src="{{ qiniu }}"></a></p>
                 </div>
             </div>
         </div>

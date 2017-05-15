@@ -65,7 +65,7 @@
         
 
         <div class="col-lg-3 col-md-2">
-            <h3>Search</h3><hr/>
+            <h3>搜索</h3><hr/>
             <form id="search-form">
               <div class="form-group">
                 <div class="input-group">
@@ -78,7 +78,7 @@
             <!-- <hr> -->
             <br>
 
-            <h3>Tags</h3><hr/>
+            <h3>标签</h3><hr/>
             {% for tag in tags %}
                 <a href="?tag={{tag}}" class="post-tag">
                     {% if tag == cur_tag %}
@@ -99,7 +99,7 @@
             {% endfor %}
 
             
-            <h3>Category</h3><hr/>
+            <h3>分类</h3><hr/>
             <div class="list-group">
                 {% for category in category_cursor %}
                 {% if category and category.name %}
