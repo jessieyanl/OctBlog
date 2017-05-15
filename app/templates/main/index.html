@@ -30,7 +30,10 @@
                     </h2>
                 </a>
                 <p class="post-subtitle">
-                    {{ post.abstract }}
+                     {{post.content_html|safe| truncate(200, True)}}
+                </p>
+                <p class="post-meta">
+                    summary :{{ post.abstract }}
                 </p>
                 <p class="post-meta">Posted by <a href="{{ url_for('main.author_detail', username=post.author.username) }}">{{ post.author.display_name }}</a> on {{ post.pub_time.strftime('%Y/%m/%d %H:%M:%S') }}</p>
                 <p class="post-meta">category: <a href="?category={{ post.category }}">{{ post.category }}</a></p>
